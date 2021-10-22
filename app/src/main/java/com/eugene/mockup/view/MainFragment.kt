@@ -38,15 +38,24 @@ class MainFragment : Fragment() {
     private fun updateData(appState: AppState) {
         when(appState) {
             is AppState.Success -> {
-                var data = appState.data;
                 binding.loadingLayout.visibility = View.GONE;
 
-                binding.valute1Tv.text = data.toString();
+                appState.data?.forEach {
+                    if (it.charCode.equals("RUB")) {
+                        binding.value1Et.setText(it.value)
+                        binding.valute1Tv.text = it.charCode
+                    }
+
+                    if (it.charCode.equals("USD")) {
+                        binding.value2Ed.setText(it.value)
+                        binding.valute2Tv.text = it.charCode
+                    }
+                }
             }
             is AppState.Loading ->  { binding.loadingLayout.visibility = View.VISIBLE; }
             is AppState.Error -> {
                 binding.loadingLayout.visibility = View.GONE;
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, appState.error.message, Toast.LENGTH_SHORT).show()
             }
         }
 
