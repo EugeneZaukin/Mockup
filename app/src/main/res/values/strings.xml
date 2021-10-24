@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Mockup</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttton_text_change_valute">Изменить валюту</string>
+    <string name="tv_item_text_name">Name</string>
+    <string name="tv_text_char">Char</string>
 </resources>

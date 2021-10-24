@@ -18,11 +18,15 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = M
                     private val repository: IRepository = RepositoryImpl()) : ViewModel() {
 
     fun getLiveData(): LiveData<AppState> {
-        getValuteFromServer();
         return liveDataToObserve;
     }
 
-    private fun getValuteFromServer() {
+    fun getValuteFromServer(): LiveData<AppState> {
+        getDataFromServer();
+        return liveDataToObserve;
+    }
+
+    private fun getDataFromServer() {
         liveDataToObserve.value = AppState.Loading;
 
         val callback = object : Callback<AllValutes> {

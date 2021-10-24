@@ -3,6 +3,7 @@ package com.eugene.mockup.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.eugene.mockup.R
+import com.eugene.mockup.view.mainfragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonChangeValuteStyle" parent="MyTheme">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/button_margin_top_change_valute</item>
+        <item name="android:text">@string/buttton_text_change_valute</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="TextViewCharCode" parent="MyTheme">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/tv_margin_top_charcode</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ItemTextViewName" parent="MyTheme">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">@string/tv_item_text_name</item>
+        <item name="android:textSize">@dimen/item_tv_name_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">@dimen/item_tv_name_padding_start</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">3</item>
+    </style>
+
+    <style name="ItemTextViewCharcode" parent="MyTheme">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">@string/tv_text_char</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textSize">@dimen/item_tv_charcode_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

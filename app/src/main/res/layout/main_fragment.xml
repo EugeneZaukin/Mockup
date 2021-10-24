@@ -5,76 +5,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainFragment">
+    tools:context=".view.mainfragment.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/value1_et"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/change_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/change_button" />
-
-        <Button
-            android:id="@+id/change_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:layout_marginTop="100dp"
-            android:text="смена"
+            android:foreground="@drawable/move"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/value2_ed"
+            android:id="@+id/value1_et"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/image_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/image_view" />
+
+        <EditText
+            android:id="@+id/value2_et"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/change_button"
-            app:layout_constraintTop_toTopOf="@+id/change_button" />
+            app:layout_constraintStart_toEndOf="@+id/image_view"
+            app:layout_constraintTop_toTopOf="@+id/image_view" />
 
         <TextView
-            android:id="@+id/valute1_tv"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toStartOf="@+id/change_button"
+            android:id="@+id/charCode1_tv"
+            style="@style/TextViewCharCode"
+            app:layout_constraintEnd_toStartOf="@+id/image_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/value1_et" />
 
         <TextView
-            android:id="@+id/valute2_tv"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:id="@+id/charCode2_tv"
+            style="@style/TextViewCharCode"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/change_button"
-            app:layout_constraintTop_toBottomOf="@+id/value2_ed" />
+            app:layout_constraintStart_toEndOf="@+id/image_view"
+            app:layout_constraintTop_toBottomOf="@+id/value2_et" />
 
         <Button
             android:id="@+id/change_valute1_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Изменить валюту"
-            app:layout_constraintEnd_toStartOf="@+id/change_button"
+            style="@style/ButtonChangeValuteStyle"
+            app:layout_constraintEnd_toStartOf="@+id/image_view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/valute1_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/charCode1_tv" />
 
         <Button
             android:id="@+id/change_valute2_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Изменить валюту"
+            style="@style/ButtonChangeValuteStyle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/change_button"
-            app:layout_constraintTop_toBottomOf="@+id/valute2_tv" />
+            app:layout_constraintStart_toEndOf="@+id/image_view"
+            app:layout_constraintTop_toBottomOf="@+id/charCode2_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_margin_top_change_valute">15dp</dimen>
+    <dimen name="tv_margin_top_charcode">50dp</dimen>
+    <dimen name="item_tv_name_text_size">20sp</dimen>
+    <dimen name="item_tv_name_padding_start">10dp</dimen>
+    <dimen name="item_tv_charcode_text_size">25sp</dimen>
+</resources>

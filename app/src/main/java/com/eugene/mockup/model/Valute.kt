@@ -1,8 +1,11 @@
 package com.eugene.mockup.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
+@Parcelize
 @Root(name = "Valute", strict = false)
 data class Valute(
 
@@ -25,4 +28,4 @@ data class Valute(
     @field:Element(name = "Value")
     @param:Element(name = "Value")
     var value: String? = null
-)
+) : Parcelable

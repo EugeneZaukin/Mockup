@@ -1,21 +1,25 @@
-package com.eugene.mockup.view
+package com.eugene.mockup.view.mainfragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.eugene.mockup.viewModel.AppState
+import androidx.lifecycle.ViewModelProvider
+import com.eugene.mockup.R
 import com.eugene.mockup.databinding.MainFragmentBinding
+import com.eugene.mockup.model.Valute
+import com.eugene.mockup.view.listfragment.ListFragment
+import com.eugene.mockup.viewModel.AppState
 import com.eugene.mockup.viewModel.MainViewModel
 
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null;
     private val binding get () = _binding!!
     private lateinit var viewModel: MainViewModel
+    private var allValutes: List<Valute>? = null
 
     companion object {
         fun newInstance() = MainFragment()
@@ -33,6 +37,9 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java);
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer<AppState> { updateData(it) });
+        viewModel.getValuteFromServer()
+
+        onClickButtonsChangeValutes();
     }
 
     private fun updateData(appState: AppState) {
@@ -40,17 +47,22 @@ class MainFragment : Fragment() {
             is AppState.Success -> {
                 binding.loadingLayout.visibility = View.GONE;
 
-                appState.data?.forEach {
-                    if (it.charCode.equals("RUB")) {
-                        binding.value1Et.setText(it.value)
-                        binding.valute1Tv.text = it.charCode
-                    }
+                allValutes = appState.data;
 
-                    if (it.charCode.equals("USD")) {
-                        binding.value2Ed.setText(it.value)
-                        binding.valute2Tv.text = it.charCode
-                    }
+                var rub: Valute? = null;
+                var usd: Valute? = null;
+
+                appState.data?.forEach {
+                    if (it.charCode.equals("RUB")) rub = it
+                    if (it.charCode.equals("USD")) run { usd = it }
                 }
+
+                binding.charCode1Tv.text = usd?.charCode
+                binding.charCode2Tv.text = rub?.charCode
+
+                binding.value1Et.setText(usd?.nominal)
+                binding.value2Et.setText(usd?.value)
+
             }
             is AppState.Loading ->  { binding.loadingLayout.visibility = View.VISIBLE; }
             is AppState.Error -> {
@@ -61,9 +73,27 @@ class MainFragment : Fragment() {
 
     }
 
+
+    private fun onClickButtonsChangeValutes() {
+        binding.changeValute1Button.setOnClickListener {
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, ListFragment.newInstance(allValutes))
+                .addToBackStack("main_frag")
+                .commitAllowingStateLoss()
+        }
+
+        binding.changeValute2Button.setOnClickListener {
+            parentFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.container, ListFragment.newInstance(allValutes))
+                    .addToBackStack("main_frag")
+                    .commitAllowingStateLoss()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null;
     }
-
 }
